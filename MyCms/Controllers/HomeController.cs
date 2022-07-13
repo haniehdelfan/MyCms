@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataLayer;
 
 namespace MyCms.Controllers
 {
     public class HomeController : Controller
     {
+        MyCmsContext db=new MyCmsContext();
+        private IPageRepository pageRepository;
+
+        public HomeController()
+        {
+            pageRepository=new PageRepository(db);
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +35,12 @@ namespace MyCms.Controllers
 
             return View();
         }
+
+        public ActionResult Slider()
+        {
+            return PartialView(pageRepository.PagesInSlider());
+        }
+
+
     }
 }

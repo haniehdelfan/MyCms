@@ -18,5 +18,7 @@ namespace DataLayer
         bool DeleteGroup(int groupId);
 
         void Save();
+
+        IEnumerable<ShowGroupViewModel> GetGroupsForView();
     }
 }
